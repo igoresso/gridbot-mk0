@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { swipe, type SwipeCustomEvent } from 'svelte-gestures';
 	import { createGame } from '$lib/stores';
 
 	// Initialize game and window dimensions
@@ -10,7 +11,7 @@
 	// Reactive values for the grid and robot
 	$: cols = $game.grid.cols;
 	$: rows = $game.grid.rows;
-	$: cellSize = Math.min((Math.max(innerWidth, 320) * 0.9) / cols, (innerHeight * 0.8) / rows, 100);
+	$: cellSize = calculateCellSize(innerWidth, innerHeight, cols, rows);
 	$: gridWidth = cols * cellSize;
 	$: gridHeight = rows * cellSize;
 	$: robotX = $game.robot.x * cellSize;
@@ -25,7 +26,10 @@
 		RIGHT: '90deg'
 	};
 
-	// Handle keyboard inputs
+	function calculateCellSize(width: number, height: number, cols: number, rows: number) {
+		return Math.min((Math.max(width, 320) * 0.9) / cols, (height * 0.8) / rows, 100);
+	}
+
 	function handleKeyDown(event: KeyboardEvent) {
 		event.stopPropagation();
 		const key = event.key.toLowerCase();
@@ -55,12 +59,40 @@
 				break;
 		}
 	}
+
+	function handleSwipe(event: SwipeCustomEvent) {
+		const direction = event.detail.direction;
+
+		switch (direction) {
+			case 'top':
+				game.rotateRobot('UP');
+				game.moveRobot();
+				break;
+			case 'bottom':
+				game.rotateRobot('DOWN');
+				game.moveRobot();
+				break;
+			case 'left':
+				game.rotateRobot('LEFT');
+				game.moveRobot();
+				break;
+			case 'right':
+				game.rotateRobot('RIGHT');
+				game.moveRobot();
+				break;
+		}
+	}
 </script>
 
 <svelte:window on:keydown={handleKeyDown} bind:innerWidth bind:innerHeight />
 
 {#if innerWidth != null}
-	<div class="relative" role="application">
+	<div
+		class="relative"
+		role="application"
+		use:swipe={{ timeframe: 300, minSwipeDistance: 60 }}
+		on:swipe={handleSwipe}
+	>
 		<svg width={gridWidth} height={gridHeight} class="grid">
 			{#each Array(rows * cols).keys() as index}
 				<rect

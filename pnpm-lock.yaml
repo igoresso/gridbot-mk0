@@ -59,6 +59,9 @@ importers:
       svelte-check:
         specifier: ^3.6.0
         version: 3.8.6(postcss-load-config@4.0.2(postcss@8.4.44))(postcss@8.4.44)(svelte@4.2.19)
+      svelte-gestures:
+        specifier: ^5.0.4
+        version: 5.0.4
       tailwindcss:
         specifier: ^3.4.10
         version: 3.4.10
@@ -1483,6 +1486,9 @@ packages:
     peerDependenciesMeta:
       svelte:
         optional: true
+
+  svelte-gestures@5.0.4:
+    resolution: {integrity: sha512-a6cnR46AfFZ8zZyvA38A1wBLBFI7rYuAWQnmv3yYgSdbaJK/U7JG34rSkjMCePRvf4BETJSDfMNngLs5zEAfbw==}
 
   svelte-hmr@0.16.0:
     resolution: {integrity: sha512-Gyc7cOS3VJzLlfj7wKS0ZnzDVdv3Pn2IuVeJPk9m2skfhcu5bq3wtIZyQGggr7/Iim5rH5cncyQft/kRLupcnA==}
@@ -3016,6 +3022,8 @@ snapshots:
       postcss-scss: 4.0.9(postcss@8.4.44)
     optionalDependencies:
       svelte: 4.2.19
+
+  svelte-gestures@5.0.4: {}
 
   svelte-hmr@0.16.0(svelte@4.2.19):
     dependencies:
