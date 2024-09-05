@@ -3,10 +3,10 @@
 </script>
 
 <header class="mb-4">
-	<h1 class="text-center text-4xl font-bold">🤖 GridBot-MK0</h1>
+	<h1 class="text-center text-3xl font-bold sm:text-4xl">🤖 GridBot-MK0</h1>
 </header>
 
-<main class="relative">
+<main>
 	<slot />
 </main>
 

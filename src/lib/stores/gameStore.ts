@@ -3,8 +3,8 @@ import type { Direction, Game, Grid, Robot } from '$lib/types';
 
 export function createGame(grid: Grid = { rows: 5, cols: 5 }) {
 	const initialRobot: Robot = {
-		x: Math.floor(grid.rows / 2),
-		y: Math.floor(grid.cols / 2),
+		x: Math.floor(grid.cols / 2),
+		y: Math.floor(grid.rows / 2),
 		dir: 'UP'
 	};
 
