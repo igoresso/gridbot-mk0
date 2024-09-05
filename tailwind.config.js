@@ -1,4 +1,5 @@
 import daisyui from 'daisyui';
+import { bumblebee } from 'daisyui/src/theming/themes';
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -6,5 +7,15 @@ export default {
 	theme: {
 		extend: {}
 	},
-	plugins: [daisyui]
+	plugins: [daisyui],
+	daisyui: {
+		themes: [
+			{
+				custom: {
+					...bumblebee,
+					accent: '#e15a1d'
+				}
+			}
+		]
+	}
 };

@@ -131,7 +131,7 @@
 		@apply box-content border-4 border-base-300;
 	}
 	.cell {
-		@apply fill-base-200 stroke-base-300 stroke-2;
+		@apply fill-gray-100 stroke-gray-300 stroke-2;
 	}
 	.robot {
 		@apply absolute left-1 top-1 rounded-xl fill-neutral-800;
