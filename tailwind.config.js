@@ -13,7 +13,8 @@ export default {
 			{
 				custom: {
 					...bumblebee,
-					accent: '#e15a1d'
+					accent: '#e15a1d',
+					'--rounded-box': '0.5rem'
 				}
 			}
 		]
