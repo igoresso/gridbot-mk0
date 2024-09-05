@@ -7,7 +7,7 @@ describe('createGame', () => {
 		const game = createGame();
 		game.subscribe((state) => {
 			expect(state.grid).toEqual({ rows: 5, cols: 5 });
-			expect(state.robot).toEqual({ x: 2, y: 2, dir: 'UP' });
+			expect(state.robot).toEqual({ x: 2, y: 2, dir: 'DOWN' });
 		});
 	});
 
@@ -25,12 +25,12 @@ describe('createGame', () => {
 	it('moves the robot correctly based on its direction', () => {
 		const game = createGame();
 
-		game.moveRobot(); // Default direction is 'UP'
+		game.moveRobot(); // Default direction is 'DOWN'
 		game.rotateRobot('RIGHT');
 		game.moveRobot();
 
 		game.subscribe((state) => {
-			expect(state.robot).toEqual({ x: 3, y: 1, dir: 'RIGHT' });
+			expect(state.robot).toEqual({ x: 3, y: 3, dir: 'RIGHT' });
 		});
 	});
 
@@ -60,7 +60,7 @@ describe('createGame', () => {
 
 		game.subscribe((state) => {
 			expect(state.grid).toEqual({ rows: 5, cols: 5 });
-			expect(state.robot).toEqual({ x: 2, y: 2, dir: 'UP' });
+			expect(state.robot).toEqual({ x: 2, y: 2, dir: 'DOWN' });
 		});
 	});
 });

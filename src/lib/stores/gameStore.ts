@@ -5,7 +5,7 @@ export function createGame(grid: Grid = { rows: 5, cols: 5 }) {
 	const initialRobot: Robot = {
 		x: Math.floor(grid.cols / 2),
 		y: Math.floor(grid.rows / 2),
-		dir: 'UP'
+		dir: 'DOWN'
 	};
 
 	const { subscribe, set, update } = writable<Game>({

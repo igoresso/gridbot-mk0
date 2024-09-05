@@ -2,33 +2,35 @@
 	import { swipe, type SwipeCustomEvent } from 'svelte-gestures';
 	import { createGame } from '$lib/stores';
 
+	import robotImg from '$lib/assets/robot.png';
+
+	export let innerWidth: number;
+	export let innerHeight: number;
+
 	// Initialize game and window dimensions
 	const game = createGame();
 
-	let innerWidth: number;
-	let innerHeight: number;
+	// Direction angles for robot rotation
+	const angles = {
+		UP: '180deg',
+		DOWN: '0deg',
+		LEFT: '90deg',
+		RIGHT: '270deg'
+	};
 
 	// Reactive values for the grid and robot
 	$: cols = $game.grid.cols;
 	$: rows = $game.grid.rows;
-	$: cellSize = calculateCellSize(innerWidth, innerHeight, cols, rows);
+	$: cellSize = Math.min(
+		(Math.max(innerWidth, 320) * 0.9) / cols,
+		(Math.min(innerHeight, 640) * 0.8) / rows,
+		100
+	);
 	$: gridWidth = cols * cellSize;
 	$: gridHeight = rows * cellSize;
 	$: robotX = $game.robot.x * cellSize;
 	$: robotY = $game.robot.y * cellSize;
 	$: robotDir = $game.robot.dir;
-
-	// Direction angles for robot rotation
-	const angles = {
-		UP: '0deg',
-		DOWN: '180deg',
-		LEFT: '270deg',
-		RIGHT: '90deg'
-	};
-
-	function calculateCellSize(width: number, height: number, cols: number, rows: number) {
-		return Math.min((Math.max(width, 320) * 0.9) / cols, (height * 0.8) / rows, 100);
-	}
 
 	function handleKeyDown(event: KeyboardEvent) {
 		event.stopPropagation();
@@ -84,47 +86,41 @@
 	}
 </script>
 
-<svelte:window on:keydown={handleKeyDown} bind:innerWidth bind:innerHeight />
+<svelte:window on:keydown={handleKeyDown} />
 
-{#if innerWidth != null}
-	<div
-		class="relative"
-		role="application"
-		use:swipe={{ timeframe: 300, minSwipeDistance: 60 }}
-		on:swipe={handleSwipe}
-	>
-		<svg width={gridWidth} height={gridHeight} class="grid">
-			{#each Array(rows * cols).keys() as index}
-				<rect
-					x={(index % cols) * cellSize}
-					y={Math.floor(index / cols) * cellSize}
-					width={cellSize}
-					height={cellSize}
-					fill="inherit"
-					stroke="inherit"
-					class="cell"
-				/>
-			{/each}
-		</svg>
-
-		<svg
+<div
+	class="relative"
+	role="application"
+	use:swipe={{ timeframe: 300, minSwipeDistance: 60 }}
+	on:swipe={handleSwipe}
+>
+	<svg width={gridWidth} height={gridHeight} class="grid">
+		{#each Array(rows * cols).keys() as index}
+			<rect
+				x={(index % cols) * cellSize}
+				y={Math.floor(index / cols) * cellSize}
+				width={cellSize}
+				height={cellSize}
+				fill="inherit"
+				stroke="inherit"
+				class="cell"
+			/>
+		{/each}
+		<image
+			href={robotImg}
 			width={cellSize}
 			height={cellSize}
+			x={robotX}
+			y={robotY}
 			class="robot"
-			viewBox="0 0 32 32"
-			style={`transform: translate(${robotX}px, ${robotY}px) rotate(${angles[robotDir]});`}
+			style={`transform: rotate(${angles[robotDir]});`}
 			role="button"
 			tabindex="0"
 			on:click={game.moveRobot}
 			on:keydown={handleKeyDown}
-		>
-			<path
-				d="M21,2H11c-5,0-9,4-9,9v10c0,5,4,9,9,9h10c5,0,9-4,9-9V11C30,6,26,2,21,2z M21.7,18.7C21.5,18.9,21.3,19,21,19
-			s-0.5-0.1-0.7-0.3L16,14.4l-4.3,4.3c-0.4,0.4-1,0.4-1.4,0s-0.4-1,0-1.4l5-5c0.4-0.4,1-0.4,1.4,0l5,5C22.1,17.7,22.1,18.3,21.7,18.7z"
-			/>
-		</svg>
-	</div>
-{/if}
+		/>
+	</svg>
+</div>
 
 <style>
 	.grid {
@@ -134,8 +130,12 @@
 		@apply fill-gray-100 stroke-gray-300 stroke-2;
 	}
 	.robot {
-		@apply absolute left-1 top-1 rounded-xl fill-neutral-800;
-		transition: transform 0.15s ease-in-out;
+		@apply origin-center rounded-xl fill-neutral-800;
+		transform-box: fill-box;
+		transition:
+			transform 0.2s ease-in-out,
+			x 0.3s ease-in-out,
+			y 0.3s ease-in-out;
 		cursor: pointer;
 
 		&:hover {

@@ -18,14 +18,14 @@
 <svelte:window bind:innerWidth />
 
 <header class="mb-4">
-	<h1 class="text-center text-4xl font-bold text-gray-800 sm:text-5xl">
+	<h1 class="text-center text-3xl font-bold text-gray-800 sm:text-5xl">
 		<a href="https://github.com/igoresso" target="_blank" rel="noopener noreferrer">
 			🤖 GridBot-MK0
 		</a>
 	</h1>
 </header>
 
-<main class="relative">
+<main class="relative grid place-content-center">
 	<slot />
 </main>
 
