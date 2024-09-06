@@ -1,5 +1,6 @@
 # 🤖 GridBot-MK0
 
+![Deployment: gh-pages](https://github.com/igoresso/gridbot-mk0/actions/workflows/deploy.yml/badge.svg)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Welcome to **GridBot-MK0**, the **cutting-edge** (well, maybe not _cutting_, but definitely sharp-ish) robot simulation app! Have you ever wanted to control a robot on a **5x5 grid** with the latest in keyboard and touch controls? Look no further, because this is _probably_ what you've been waiting for your whole life. Maybe.
