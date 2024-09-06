@@ -1,38 +1,28 @@
-# create-svelte
+# 🤖 GridBot-MK0
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## Creating a project
+Welcome to **GridBot-MK0**, the **cutting-edge** (well, maybe not _cutting_, but definitely sharp-ish) robot simulation app! Have you ever wanted to control a robot on a **5x5 grid** with the latest in keyboard and touch controls? Look no further, because this is _probably_ what you've been waiting for your whole life. Maybe.
 
-If you're seeing this, you've probably already done this step. Congrats!
+So, what can you do in this app?
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+1. **Move forward**: Takes one step forward in whichever direction your robot is facing. If it falls off the grid, we’re not responsible. Gravity is on your side.
+2. **Rotate**: Spin that robot like a record! Face North, East, South, or West. Your robot’s sense of direction is better than mine.
+3. **Keyboard & Touch Controls**: Whether you like typing or tapping, we got you covered. Control your bot like a pro.
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+---
 
-## Developing
+### 🚀 Tech Stack
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+- **Svelte**: Because we like our frontends blazing fast. 🔥
+- **Vite**: The fastest bundler in the West (and East, too). 🏎️
+- **TailwindCSS**: For when you need to make things pretty but also fast. 💅
+- **DaisyUI**: Pre-made components that save time and look amazing. 🌼
 
-```bash
-npm run dev
+### License
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+This project is licensed under the MIT License. Feel free to use, modify, and send your robot army into the world!
 
-## Building
+---
 
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+⚠️ **Warning:** GridBot-MK0 has no spatial awareness, feelings, or the ability to understand the nuances of human emotions. It will faithfully follow your commands, even if they lead to the edge of the grid (but don’t worry, we’ll stop it from falling off).
