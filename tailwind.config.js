@@ -5,7 +5,11 @@ import { bumblebee } from 'daisyui/src/theming/themes';
 export default {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 	theme: {
-		extend: {}
+		extend: {
+			fontFamily: {
+				sans: ['Noto Sans', 'Open Sans', 'Helvetica', 'Arial', 'sans-serif']
+			}
+		}
 	},
 	plugins: [daisyui],
 	daisyui: {
