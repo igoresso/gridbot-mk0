@@ -3,8 +3,6 @@
 	import { Controls } from '$lib/components';
 	import '../app.postcss';
 
-	export const prerender = true;
-
 	let innerWidth: number;
 	let isModalOpen = false;
 
@@ -21,7 +19,7 @@
 
 <header class="mb-4">
 	<h1 class="text-center text-3xl font-bold text-gray-800 sm:text-5xl">
-		<a href="https://github.com/igoresso" target="_blank" rel="noopener noreferrer">
+		<a href="https://github.com/igoresso/gridbot-mk0" target="_blank" rel="noopener noreferrer">
 			🤖 GridBot-MK0
 		</a>
 	</h1>
