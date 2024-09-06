@@ -3,6 +3,8 @@
 	import { Controls } from '$lib/components';
 	import '../app.postcss';
 
+	export const prerender = true;
+
 	let innerWidth: number;
 	let isModalOpen = false;
 

@@ -1,0 +1,5 @@
+{
+	"yaml.schemas": {
+		"https://json.schemastore.org/github-workflow.json": "file:///Users/ityshchenko/Desktop/gridbot-mk0/.github/workflows/deploy.yml"
+	}
+}
